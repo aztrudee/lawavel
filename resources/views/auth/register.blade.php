@@ -7,8 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        body { background: #0f0f1a; color: #e0e0e0; min-height: 100vh; display:flex; align-items:center; justify-content:center; }
-        .auth-card { background: #16162a; border: 1px solid #2a2a4a; border-radius: 16px; padding: 2.5rem; width: 100%; max-width: 420px; }
+        body { background: #0f0f1a; color: #e0e0e0; min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 1rem; }
+        .auth-card { background: #16162a; border: 1px solid #2a2a4a; border-radius: 16px; padding: 2rem; width: 100%; max-width: 420px; }
         .brand { font-size: 1.8rem; font-weight: 700; color: #a78bfa; text-align:center; margin-bottom: .3rem; }
         .form-control { background: #1e1e38; border-color: #2a2a4a; color: #e0e0e0; }
         .form-control:focus { background: #1e1e38; border-color: #7c3aed; color: #e0e0e0; box-shadow: 0 0 0 .2rem rgba(124,58,237,.25); }

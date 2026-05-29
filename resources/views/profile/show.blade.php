@@ -11,7 +11,7 @@
 <h4 class="fw-bold mb-4" style="color:#a78bfa"><i class="bi bi-person-circle me-2"></i>My Profile</h4>
 
 <div class="row g-4">
-    <div class="col-md-4">
+    <div class="col-12 col-md-4">
         <div class="card p-4 text-center">
             @if($user->profile_picture)
                 <img src="{{ Storage::url($user->profile_picture) }}" class="avatar-lg mx-auto mb-3">
@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-12 col-md-8">
         <div class="card">
             <div class="card-header fw-semibold" style="color:#a78bfa">Edit Profile</div>
             <div class="card-body">
