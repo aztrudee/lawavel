@@ -122,8 +122,8 @@
     </nav>
     <div class="sidebar-footer">
         <div class="d-flex align-items-center gap-2 mb-2">
-            @if(auth()->user()->profile_picture)
-                <img src="{{ Storage::url(auth()->user()->profile_picture) }}" class="avatar">
+            @if(auth()->user()->profile_picture_base64)
+                <img src="{{ auth()->user()->profile_picture_base64 }}" class="avatar">
             @else
                 <div class="avatar-placeholder">{{ strtoupper(substr(auth()->user()->name,0,1)) }}</div>
             @endif

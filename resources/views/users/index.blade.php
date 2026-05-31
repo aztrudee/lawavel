@@ -29,8 +29,8 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>
                         <div class="d-flex align-items-center gap-2">
-                            @if($user->profile_picture)
-                                <img src="{{ Storage::url($user->profile_picture) }}" style="width:32px;height:32px;border-radius:50%;object-fit:cover">
+                            @if($user->profile_picture_base64)
+                                <img src="{{ $user->profile_picture_base64 }}" style="width:32px;height:32px;border-radius:50%;object-fit:cover">
                             @else
                                 <div style="width:32px;height:32px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff">
                                     {{ strtoupper(substr($user->name,0,1)) }}

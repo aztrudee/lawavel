@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
     gender VARCHAR(50) NULL,
     address VARCHAR(500) NULL,
     profile_picture VARCHAR(255) NULL,
+    profile_picture_base64 LONGTEXT NULL,
     remember_token VARCHAR(100) NULL,
     created_at TIMESTAMP NULL,
     updated_at TIMESTAMP NULL
@@ -53,4 +54,11 @@ INSERT INTO migrations (migration, batch) VALUES
 ('0001_01_01_000000_create_users_table', 1),
 ('0001_01_01_000001_create_cache_table', 1),
 ('0001_01_01_000002_create_jobs_table', 1),
-('2024_01_01_000003_create_anime_lists_table', 1);
+('2024_01_01_000003_create_anime_lists_table', 1),
+('2024_01_02_000001_add_profile_picture_base64_to_users_table', 1);
+
+-- ============================================================
+-- If you already have the database and just need to add the
+-- new column to an existing users table, run only this:
+-- ============================================================
+-- ALTER TABLE users ADD COLUMN profile_picture_base64 LONGTEXT NULL AFTER profile_picture;

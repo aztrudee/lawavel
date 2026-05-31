@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -23,7 +22,7 @@ class ProfileController extends Controller
             'gender'          => 'nullable|in:Male,Female,Other',
             'address'         => 'nullable|string|max:500',
             'password'        => 'nullable|min:6|confirmed',
-            'profile_picture' => 'nullable|image|max:2048',
+            'profile_picture' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
         ]);
 
         $data = $request->only('name', 'email', 'gender', 'address');
@@ -33,10 +32,12 @@ class ProfileController extends Controller
         }
 
         if ($request->hasFile('profile_picture')) {
-            if ($user->profile_picture) {
-                Storage::disk('public')->delete($user->profile_picture);
-            }
-            $data['profile_picture'] = $request->file('profile_picture')->store('profiles', 'public');
+            $file     = $request->file('profile_picture');
+            $mime     = $file->getMimeType();
+            $binary   = file_get_contents($file->getRealPath());
+            $base64   = base64_encode($binary);
+
+            $data['profile_picture_base64'] = 'data:' . $mime . ';base64,' . $base64;
         }
 
         $user->update($data);
