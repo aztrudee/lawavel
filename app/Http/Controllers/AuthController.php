@@ -14,11 +14,17 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
+        $validator = validator($request->all(), [
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('register')
+                ->with('toast_error', $validator->errors()->first())
+                ->withInput();
+        }
 
         User::create([
             'name'     => $request->name,

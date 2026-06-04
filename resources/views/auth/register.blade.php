@@ -15,20 +15,13 @@
         .form-label { color: #b0b0c8; font-size: .9rem; }
         .btn-primary { background: #7c3aed; border-color: #7c3aed; }
         .btn-primary:hover { background: #6d28d9; border-color: #6d28d9; }
+        .toast-container { z-index: 9999; }
     </style>
 </head>
 <body>
 <div class="auth-card">
     <div class="brand">AniTrack</div>
     <p class="text-center mb-4" style="color:#888;font-size:.9rem">Create your account</p>
-
-    @if($errors->any())
-        <div class="alert alert-danger py-2">
-            <ul class="mb-0 ps-3">
-                @foreach($errors->all() as $e)<li>{{ $e }}</li>@endforeach
-            </ul>
-        </div>
-    @endif
 
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -54,6 +47,29 @@
         Already have an account? <a href="{{ route('login') }}" style="color:#a78bfa">Login</a>
     </p>
 </div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    @if(session('toast_success'))
+    <div class="toast align-items-center text-bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">{{ session('toast_success') }}</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+    @endif
+    @if(session('toast_error'))
+    <div class="toast align-items-center text-bg-danger border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body">{{ session('toast_error') }}</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+    @endif
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.querySelectorAll('.toast').forEach(el => new bootstrap.Toast(el, { delay: 4000 }).show());
+</script>
 </body>
 </html>

@@ -16,11 +16,16 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validator = validator($request->all(), [
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('users.index')
+                ->with('toast_error', $validator->errors()->first());
+        }
 
         User::create([
             'name'     => $request->name,
