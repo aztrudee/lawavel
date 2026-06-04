@@ -8,25 +8,25 @@
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
             <div class="fs-2 fw-bold">{{ $totalUsers }}</div>
-            <div style="color:#888;font-size:.85rem">Total Users</div>
+            <div style="color:#fff;font-size:.85rem">Total Users</div>
         </div>
     </div>
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
             <div class="fs-2 fw-bold">{{ $totalAnime }}</div>
-            <div style="color:#888;font-size:.85rem">My Anime Entries</div>
+            <div style="color:#fff;font-size:.85rem">My Anime Entries</div>
         </div>
     </div>
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
             <div class="fs-2 fw-bold">{{ $statusCounts['Watching'] ?? 0 }}</div>
-            <div style="color:#888;font-size:.85rem">Watching</div>
+            <div style="color:#fff;font-size:.85rem">Watching</div>
         </div>
     </div>
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
             <div class="fs-2 fw-bold">{{ $statusCounts['Completed'] ?? 0 }}</div>
-            <div style="color:#888;font-size:.85rem">Completed</div>
+            <div style="color:#fff;font-size:.85rem">Completed</div>
         </div>
     </div>
 </div>
