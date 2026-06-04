@@ -22,7 +22,7 @@
         <input type="number" name="episodes" class="form-control" min="0" value="0" required>
     </div>
     <div class="col-6 mb-3">
-        <label class="form-label">Rating <small style="color:#666">(1–10)</small></label>
+        <label class="form-label">Rating (1-10)</label>
         <input type="number" name="rating" class="form-control" min="1" max="10" placeholder="Optional">
     </div>
 </div>

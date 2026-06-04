@@ -1,14 +1,8 @@
-@use('Illuminate\Support\Facades\Storage')
 @extends('layouts.app')
 @section('title', 'Profile')
 
-@push('scripts')
-<style>
-    .profile-form .form-label { color: #fff; }
-</style>
-@endpush
 @section('content')
-<h4 class="fw-bold mb-4" style="color:#a78bfa"><i class="bi bi-person-circle me-2"></i>My Profile</h4>
+<h4 class="fw-bold mb-4" style="color:#a78bfa">My Profile</h4>
 
 <div class="row g-4">
     <div class="col-12 col-md-4">
@@ -26,7 +20,7 @@
                 <div class="mt-2"><span class="badge bg-secondary">{{ $user->gender }}</span></div>
             @endif
             @if($user->address)
-                <div class="mt-2" style="color:#fff;font-size:.85rem"><i class="bi bi-geo-alt me-1"></i>{{ $user->address }}</div>
+                <div class="mt-2" style="color:#fff;font-size:.85rem">{{ $user->address }}</div>
             @endif
             <div class="mt-3" style="color:#fff;font-size:.8rem">Member since {{ $user->created_at->format('M Y') }}</div>
         </div>
@@ -42,19 +36,19 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="profile-form">
+                <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                     @csrf @method('PUT')
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label">Full Name</label>
+                            <label class="form-label" style="color:#fff">Full Name</label>
                             <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Email</label>
+                            <label class="form-label" style="color:#fff">Email</label>
                             <input type="email" name="email" class="form-control" value="{{ old('email', $user->email) }}" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Gender</label>
+                            <label class="form-label" style="color:#fff">Gender</label>
                             <select name="gender" class="form-select">
                                 <option value="">Select gender</option>
                                 @foreach(['Male','Female','Other'] as $g)
@@ -63,25 +57,23 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Address</label>
+                            <label class="form-label" style="color:#fff">Address</label>
                             <input type="text" name="address" class="form-control" value="{{ old('address', $user->address) }}" placeholder="Optional">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">New Password <small style="color:#fff">(leave blank to keep)</small></label>
+                            <label class="form-label" style="color:#fff">New Password <small style="color:#aaa">(leave blank to keep)</small></label>
                             <input type="password" name="password" class="form-control">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Confirm Password</label>
+                            <label class="form-label" style="color:#fff">Confirm Password</label>
                             <input type="password" name="password_confirmation" class="form-control">
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Profile Picture</label>
+                            <label class="form-label" style="color:#fff">Profile Picture</label>
                             <input type="file" name="profile_picture" class="form-control" accept="image/*">
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="bi bi-save me-1"></i>Save Changes
-                            </button>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </div>
                 </form>

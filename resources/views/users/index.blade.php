@@ -1,69 +1,67 @@
-@use('Illuminate\Support\Facades\Storage')
 @extends('layouts.app')
 @section('title', 'Users')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h4 class="fw-bold mb-0" style="color:#a78bfa"><i class="bi bi-people me-2"></i>Users Management</h4>
+    <h4 class="fw-bold mb-0" style="color:#a78bfa">Users Management</h4>
     <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addUserModal">
-        <i class="bi bi-plus-lg me-1"></i>Add User
+        Add User
     </button>
 </div>
 
 <div class="card">
     <div class="card-body p-0">
         <div class="table-responsive">
-        <table class="table table-hover mb-0">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Created</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($users as $user)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>
-                        <div class="d-flex align-items-center gap-2">
-                            @if($user->profile_picture_base64)
-                                <img src="{{ $user->profile_picture_base64 }}" style="width:32px;height:32px;border-radius:50%;object-fit:cover">
-                            @else
-                                <div style="width:32px;height:32px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff">
-                                    {{ strtoupper(substr($user->name,0,1)) }}
-                                </div>
-                            @endif
-                            {{ $user->name }}
-                        </div>
-                    </td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->created_at->format('M d, Y') }}</td>
-                    <td>
-                        <button class="btn btn-sm btn-outline-warning me-1"
-                            data-bs-toggle="modal" data-bs-target="#editUserModal"
-                            data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}">
-                            <i class="bi bi-pencil"></i>
-                        </button>
-                        <form method="POST" action="{{ route('users.destroy', $user) }}" class="d-inline"
-                            onsubmit="return confirm('Delete this user?')">
-                            @csrf @method('DELETE')
-                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <tr><td colspan="5" class="text-center py-4" style="color:#666">No users found.</td></tr>
-                @endforelse
-            </tbody>
-        </table>
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($users as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                @if($user->profile_picture_base64)
+                                    <img src="{{ $user->profile_picture_base64 }}" style="width:32px;height:32px;border-radius:50%;object-fit:cover">
+                                @else
+                                    <div style="width:32px;height:32px;border-radius:50%;background:#7c3aed;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:#fff">
+                                        {{ strtoupper(substr($user->name,0,1)) }}
+                                    </div>
+                                @endif
+                                {{ $user->name }}
+                            </div>
+                        </td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->created_at->format('M d, Y') }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-warning me-1"
+                                data-bs-toggle="modal" data-bs-target="#editUserModal"
+                                data-id="{{ $user->id }}" data-name="{{ $user->name }}" data-email="{{ $user->email }}">
+                                Edit
+                            </button>
+                            <form method="POST" action="{{ route('users.destroy', $user) }}" class="d-inline"
+                                onsubmit="return confirm('Delete this user?')">
+                                @csrf @method('DELETE')
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr><td colspan="5" class="text-center py-4" style="color:#666">No users found.</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-{{-- Add User Modal --}}
 <div class="modal fade" id="addUserModal" tabindex="-1">
     <div class="modal-dialog">
         <form method="POST" action="{{ route('users.store') }}">
@@ -96,7 +94,6 @@
     </div>
 </div>
 
-{{-- Edit User Modal --}}
 <div class="modal fade" id="editUserModal" tabindex="-1">
     <div class="modal-dialog">
         <form method="POST" id="editUserForm">
@@ -116,7 +113,7 @@
                         <input type="email" name="email" id="editEmail" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">New Password <small style="color:#666">(leave blank to keep)</small></label>
+                        <label class="form-label">New Password <small style="color:#888">(leave blank to keep)</small></label>
                         <input type="password" name="password" class="form-control">
                     </div>
                 </div>

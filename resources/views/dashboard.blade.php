@@ -2,33 +2,29 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<h4 class="fw-bold mb-4" style="color:#a78bfa"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h4>
+<h4 class="fw-bold mb-4" style="color:#a78bfa">Dashboard</h4>
 
 <div class="row g-3 mb-4">
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
-            <div style="font-size:2rem;color:#a78bfa"><i class="bi bi-people-fill"></i></div>
             <div class="fs-2 fw-bold">{{ $totalUsers }}</div>
             <div style="color:#888;font-size:.85rem">Total Users</div>
         </div>
     </div>
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
-            <div style="font-size:2rem;color:#34d399"><i class="bi bi-collection-play-fill"></i></div>
             <div class="fs-2 fw-bold">{{ $totalAnime }}</div>
             <div style="color:#888;font-size:.85rem">My Anime Entries</div>
         </div>
     </div>
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
-            <div style="font-size:2rem;color:#60a5fa"><i class="bi bi-eye-fill"></i></div>
             <div class="fs-2 fw-bold">{{ $statusCounts['Watching'] ?? 0 }}</div>
             <div style="color:#888;font-size:.85rem">Watching</div>
         </div>
     </div>
     <div class="col-6 col-md-3">
         <div class="card p-3 text-center">
-            <div style="font-size:2rem;color:#f59e0b"><i class="bi bi-check-circle-fill"></i></div>
             <div class="fs-2 fw-bold">{{ $statusCounts['Completed'] ?? 0 }}</div>
             <div style="color:#888;font-size:.85rem">Completed</div>
         </div>

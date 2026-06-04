@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AniTrack – Login</title>
+    <title>AniTrack - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body { background: #0f0f1a; color: #e0e0e0; min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 1rem; }
         .auth-card { background: #16162a; border: 1px solid #2a2a4a; border-radius: 16px; padding: 2rem; width: 100%; max-width: 420px; }
@@ -21,7 +20,7 @@
 </head>
 <body>
 <div class="auth-card">
-    <div class="brand"><i class="bi bi-play-circle-fill"></i> AniTrack</div>
+    <div class="brand">AniTrack</div>
     <p class="text-center mb-4" style="color:#888;font-size:.9rem">Sign in to your account</p>
 
     @if($errors->any())
@@ -49,7 +48,7 @@
     @if(session('toast_success'))
     <div class="toast align-items-center text-bg-success border-0" role="alert">
         <div class="d-flex">
-            <div class="toast-body"><i class="bi bi-check-circle me-2"></i>{{ session('toast_success') }}</div>
+            <div class="toast-body">{{ session('toast_success') }}</div>
             <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
         </div>
     </div>
