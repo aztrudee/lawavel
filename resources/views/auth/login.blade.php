@@ -31,7 +31,7 @@
         @csrf
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" placeholder="you@example.com" value="{{ old('email') }}" required>
+            <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
         </div>
         <div class="mb-4">
             <label class="form-label">Password</label>

@@ -27,11 +27,11 @@
         @csrf
         <div class="mb-3">
             <label class="form-label">Full Name</label>
-            <input type="text" name="name" class="form-control" placeholder="John Doe" value="{{ old('name') }}" required>
+            <input type="text" name="name" class="form-control" placeholder="Full Name" value="{{ old('name') }}" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" placeholder="you@example.com" value="{{ old('email') }}" required>
+            <input type="email" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Password</label>
